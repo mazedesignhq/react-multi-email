@@ -12,7 +12,7 @@ class ReactMultiEmail extends React.Component {
             const { validateEmail } = this.props;
             let validEmails = [];
             let inputValue = '';
-            const re = /[ ,;]/g;
+            const re = /[,;]/g;
             const isEmail = validateEmail || isEmailFn;
             const addEmails = (email) => {
                 const emails = this.state.emails;
@@ -37,7 +37,7 @@ class ReactMultiEmail extends React.Component {
                         }
                         else {
                             if (arr.length === 1) {
-                                /// 마지막 아이템이면 inputValue로 남겨두기
+                                /// If it is the last item, leave it as inputValue
                                 inputValue = '' + arr.shift();
                             }
                             else {
@@ -93,11 +93,11 @@ class ReactMultiEmail extends React.Component {
         };
         this.handleOnKeydown = (e) => {
             switch (e.which) {
-                case 13:
-                case 9:
+                case 13: // enter
+                case 9: // tab
                     e.preventDefault();
                     break;
-                case 8:
+                case 8: // delete
                     if (!e.currentTarget.value) {
                         this.removeEmail(this.state.emails.length - 1);
                     }

@@ -48,7 +48,7 @@ var ReactMultiEmail = /** @class */ (function (_super) {
             var validateEmail = _this.props.validateEmail;
             var validEmails = [];
             var inputValue = '';
-            var re = /[ ,;]/g;
+            var re = /[,;]/g;
             var isEmail = validateEmail || isEmail_1.default;
             var addEmails = function (email) {
                 var emails = _this.state.emails;
@@ -73,7 +73,7 @@ var ReactMultiEmail = /** @class */ (function (_super) {
                         }
                         else {
                             if (arr.length === 1) {
-                                /// 마지막 아이템이면 inputValue로 남겨두기
+                                /// If it is the last item, leave it as inputValue
                                 inputValue = '' + arr.shift();
                             }
                             else {
@@ -126,11 +126,11 @@ var ReactMultiEmail = /** @class */ (function (_super) {
         };
         _this.handleOnKeydown = function (e) {
             switch (e.which) {
-                case 13:
-                case 9:
+                case 13: // enter
+                case 9: // tab
                     e.preventDefault();
                     break;
-                case 8:
+                case 8: // delete
                     if (!e.currentTarget.value) {
                         _this.removeEmail(_this.state.emails.length - 1);
                     }
