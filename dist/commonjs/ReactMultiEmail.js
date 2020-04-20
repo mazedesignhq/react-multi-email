@@ -45,10 +45,10 @@ var ReactMultiEmail = /** @class */ (function (_super) {
             inputValue: '',
         };
         _this.findEmailAddress = function (value, isEnter) {
-            var validateEmail = _this.props.validateEmail;
+            var _a = _this.props, splitRegexp = _a.splitRegexp, validateEmail = _a.validateEmail;
             var validEmails = [];
             var inputValue = '';
-            var re = /[,;]/g;
+            var re = splitRegexp || /[ ,;]/g;
             var isEmail = validateEmail || isEmail_1.default;
             var addEmails = function (email) {
                 var emails = _this.state.emails;
@@ -128,7 +128,9 @@ var ReactMultiEmail = /** @class */ (function (_super) {
             switch (e.which) {
                 case 13: // enter
                 case 9: // tab
-                    e.preventDefault();
+                    if (e.currentTarget.value && e.currentTarget.value.length) {
+                        e.preventDefault();
+                    }
                     break;
                 case 8: // delete
                     if (!e.currentTarget.value) {

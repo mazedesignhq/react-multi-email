@@ -1,6 +1,7 @@
 import * as React from 'react';
 export interface IReactMultiEmailProps {
     emails?: string[];
+    splitRegexp?: RegExp;
     onChange?: (emails: string[]) => void;
     onChangeInput?: (value: string) => void;
     onFocus?: () => void;
