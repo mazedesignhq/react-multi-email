@@ -3,6 +3,7 @@ import isEmailFn from './isEmail';
 
 export interface IReactMultiEmailProps {
   emails?: string[];
+  splitRegexp?: RegExp;
   onChange?: (emails: string[]) => void;
   onChangeInput?: (value: string) => void;
   onFocus?: () => void;
@@ -60,10 +61,10 @@ class ReactMultiEmail extends React.Component<
   }
 
   findEmailAddress = (value: string, isEnter?: boolean) => {
-    const { validateEmail } = this.props;
+    const { splitRegexp, validateEmail } = this.props;
     let validEmails: string[] = [];
     let inputValue: string = '';
-    const re = /[,;]/g;
+    const re = splitRegexp || /[ ,;]/g;
     const isEmail = validateEmail || isEmailFn;
 
     const addEmails = (email: string) => {
@@ -154,7 +155,9 @@ class ReactMultiEmail extends React.Component<
     switch (e.which) {
       case 13: // enter
       case 9: // tab
-        e.preventDefault();
+        if(e.currentTarget.value && e.currentTarget.value.length) {
+          e.preventDefault();
+        }
         break;
       case 8: // delete
         if (!e.currentTarget.value) {
