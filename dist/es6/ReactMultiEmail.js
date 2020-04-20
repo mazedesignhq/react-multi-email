@@ -9,10 +9,10 @@ class ReactMultiEmail extends React.Component {
             inputValue: '',
         };
         this.findEmailAddress = (value, isEnter) => {
-            const { validateEmail } = this.props;
+            const { splitRegexp, validateEmail } = this.props;
             let validEmails = [];
             let inputValue = '';
-            const re = /[,;]/g;
+            const re = splitRegexp || /[ ,;]/g;
             const isEmail = validateEmail || isEmailFn;
             const addEmails = (email) => {
                 const emails = this.state.emails;
@@ -95,7 +95,9 @@ class ReactMultiEmail extends React.Component {
             switch (e.which) {
                 case 13: // enter
                 case 9: // tab
-                    e.preventDefault();
+                    if (e.currentTarget.value && e.currentTarget.value.length) {
+                        e.preventDefault();
+                    }
                     break;
                 case 8: // delete
                     if (!e.currentTarget.value) {
