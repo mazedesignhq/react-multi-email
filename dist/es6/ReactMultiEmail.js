@@ -15,20 +15,24 @@ class ReactMultiEmail extends React.Component {
             const re = splitRegexp || /[ ,;]/g;
             const isEmail = validateEmail || isEmailFn;
             const addEmails = (email) => {
+                const trimmedEmail = email.trim();
                 const emails = this.state.emails;
                 for (let i = 0, l = emails.length; i < l; i++) {
-                    if (emails[i] === email) {
+                    if (emails[i] === trimmedEmail) {
                         return false;
                     }
                 }
-                validEmails.push(email);
+                validEmails.push(trimmedEmail);
                 return true;
             };
             if (value !== '') {
                 if (re.test(value)) {
                     let splitData = value.split(re).filter(n => {
-                        return n !== '' && n !== undefined && n !== null;
+                        return !['', undefined, null].includes(n);
                     });
+                    if (!splitData.length) {
+                        return;
+                    }
                     const setArr = new Set(splitData);
                     let arr = [...setArr];
                     do {

@@ -68,21 +68,26 @@ class ReactMultiEmail extends React.Component<
     const isEmail = validateEmail || isEmailFn;
 
     const addEmails = (email: string) => {
+      const trimmedEmail = email.trim();
+
       const emails: string[] = this.state.emails;
       for (let i = 0, l = emails.length; i < l; i++) {
-        if (emails[i] === email) {
+        if (emails[i] === trimmedEmail) {
           return false;
         }
       }
-      validEmails.push(email);
+      validEmails.push(trimmedEmail);
       return true;
     };
 
     if (value !== '') {
       if (re.test(value)) {
         let splitData = value.split(re).filter(n => {
-          return ['', undefined, null].includes(n);
+          return !['', undefined, null].includes(n);
         });
+        if (!splitData.length) {
+          return;
+        }
 
         const setArr = new Set(splitData);
         let arr = [...setArr];

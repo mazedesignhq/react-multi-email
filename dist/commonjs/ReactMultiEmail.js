@@ -51,20 +51,24 @@ var ReactMultiEmail = /** @class */ (function (_super) {
             var re = splitRegexp || /[ ,;]/g;
             var isEmail = validateEmail || isEmail_1.default;
             var addEmails = function (email) {
+                var trimmedEmail = email.trim();
                 var emails = _this.state.emails;
                 for (var i = 0, l = emails.length; i < l; i++) {
-                    if (emails[i] === email) {
+                    if (emails[i] === trimmedEmail) {
                         return false;
                     }
                 }
-                validEmails.push(email);
+                validEmails.push(trimmedEmail);
                 return true;
             };
             if (value !== '') {
                 if (re.test(value)) {
                     var splitData = value.split(re).filter(function (n) {
-                        return n !== '' && n !== undefined && n !== null;
+                        return !['', undefined, null].includes(n);
                     });
+                    if (!splitData.length) {
+                        return;
+                    }
                     var setArr = new Set(splitData);
                     var arr = __spread(setArr);
                     do {
