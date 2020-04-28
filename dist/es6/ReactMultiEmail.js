@@ -25,10 +25,10 @@ class ReactMultiEmail extends React.Component {
                 validEmails.push(trimmedEmail);
                 return true;
             };
-            if (value !== '') {
+            if (!['', ','].includes(value)) {
                 if (re.test(value)) {
                     let splitData = value.split(re).filter(n => {
-                        return !['', undefined, null].includes(n);
+                        return !['', ',', undefined, null].includes(n);
                     });
                     if (!splitData.length) {
                         return;

@@ -61,10 +61,10 @@ var ReactMultiEmail = /** @class */ (function (_super) {
                 validEmails.push(trimmedEmail);
                 return true;
             };
-            if (value !== '') {
+            if (!['', ','].includes(value)) {
                 if (re.test(value)) {
                     var splitData = value.split(re).filter(function (n) {
-                        return !['', undefined, null].includes(n);
+                        return !['', ',', undefined, null].includes(n);
                     });
                     if (!splitData.length) {
                         return;
