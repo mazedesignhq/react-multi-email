@@ -1,14 +1,24 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var isEmail_1 = require("./isEmail");
@@ -70,11 +80,11 @@ var ReactMultiEmail = /** @class */ (function (_super) {
                 }
             }
             _this.setState({
-                emails: _this.state.emails.concat(validEmails),
+                emails: __spreadArrays(_this.state.emails, validEmails),
                 inputValue: inputValue,
             });
             if (validEmails.length && _this.props.onChange) {
-                _this.props.onChange(_this.state.emails.concat(validEmails));
+                _this.props.onChange(__spreadArrays(_this.state.emails, validEmails));
             }
             if (_this.props.onChangeInput && _this.state.inputValue !== inputValue) {
                 _this.props.onChangeInput(inputValue);
@@ -89,7 +99,7 @@ var ReactMultiEmail = /** @class */ (function (_super) {
         _this.removeEmail = function (index) {
             _this.setState(function (prevState) {
                 return {
-                    emails: prevState.emails.slice(0, index).concat(prevState.emails.slice(index + 1)),
+                    emails: __spreadArrays(prevState.emails.slice(0, index), prevState.emails.slice(index + 1)),
                 };
             }, function () {
                 if (_this.props.onChange) {
