@@ -42,7 +42,7 @@ var ReactMultiEmail = /** @class */ (function (_super) {
         _this.state = {
             focused: false,
             emails: [],
-            inputValue: '',
+            inputValue: _this.props.inputValue || '',
         };
         _this.findEmailAddress = function (value, isEnter) {
             var _a = _this.props, splitRegexp = _a.splitRegexp, validateEmail = _a.validateEmail;
@@ -112,9 +112,6 @@ var ReactMultiEmail = /** @class */ (function (_super) {
             }
         };
         _this.onChangeInputValue = function (value) {
-            if (_this.props.onChangeInput) {
-                _this.props.onChangeInput(value);
-            }
             _this.findEmailAddress(value);
         };
         _this.removeEmail = function (index) {
@@ -179,7 +176,7 @@ var ReactMultiEmail = /** @class */ (function (_super) {
             return {
                 propsEmails: nextProps.emails || [],
                 emails: nextProps.emails || [],
-                inputValue: '',
+                inputValue: nextProps.inputValue || '',
                 focused: false,
             };
         }

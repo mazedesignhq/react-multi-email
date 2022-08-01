@@ -3,6 +3,7 @@ export interface IReactMultiEmailProps {
     emails?: string[];
     splitRegexp?: RegExp;
     onChange?: (emails: string[]) => void;
+    inputValue?: string;
     onChangeInput?: (value: string) => void;
     onFocus?: () => void;
     onBlur?: () => void;

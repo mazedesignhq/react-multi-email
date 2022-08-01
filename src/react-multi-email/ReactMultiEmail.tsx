@@ -5,6 +5,7 @@ export interface IReactMultiEmailProps {
   emails?: string[];
   splitRegexp?: RegExp;
   onChange?: (emails: string[]) => void;
+  inputValue?: string;
   onChangeInput?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -34,7 +35,7 @@ class ReactMultiEmail extends React.Component<
   state = {
     focused: false,
     emails: [],
-    inputValue: '',
+    inputValue: this.props.inputValue || '',
   };
 
   emailInputRef: React.RefObject<HTMLInputElement>;
@@ -47,7 +48,7 @@ class ReactMultiEmail extends React.Component<
       return {
         propsEmails: nextProps.emails || [],
         emails: nextProps.emails || [],
-        inputValue: '',
+        inputValue: nextProps.inputValue || '',
         focused: false,
       };
     }
@@ -132,9 +133,6 @@ class ReactMultiEmail extends React.Component<
   };
 
   onChangeInputValue = (value: string) => {
-    if (this.props.onChangeInput) {
-      this.props.onChangeInput(value);
-    }
     this.findEmailAddress(value);
   };
 
