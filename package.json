@@ -1,10 +1,10 @@
 {
-  "name": "react-multi-email",
+  "name": "@mazeapp/react-multi-email",
   "version": "1.0.6",
   "jsnext:main": "dist/es6/index.js",
   "module": "dist/es6/index.js",
   "main": "dist/commonjs/index.js",
-  "repository": "https://github.com/axisj/react-multi-email",
+  "repository": "https://github.com/mazedesignhq/react-multi-email",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
