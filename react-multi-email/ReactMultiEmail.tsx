@@ -202,7 +202,6 @@ export function ReactMultiEmail(props: IReactMultiEmailProps) {
 
       switch (e.key) {
         case 'Enter':
-        case 'Backspace':
           await findEmailAddress(e.currentTarget.value, true);
           break;
         default:
