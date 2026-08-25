@@ -1,0 +1,35 @@
+{
+  "patches": {
+    "pkg:npm/ua-parser-js@0.7.17": {
+      "uuid": "339ace44-269d-4d68-a984-996b67964e4f",
+      "exportedAt": "Thu, 28 May 2026 17:32:35 GMT",
+      "files": {
+        "package/dist/ua-parser.min.js": {
+          "beforeHash": "7c427d63969f1489263f11a3fd276e6ad482a093e3ceba466c450d87ac467bcc",
+          "afterHash": "e19b59beb65b4d8fb4e791420265c7e83b11a1512714cc9c93d40cf2c69f36ef"
+        },
+        "package/dist/ua-parser.pack.js": {
+          "beforeHash": "2e6b7820d7b9417997cb0af9ba63e51dce841e52368b404ba03aea2800ea20a2",
+          "afterHash": "18e514a46ca6a6bfdd2383b25230eddb0c9fe3c1d63470d7c21ca7d598aea910"
+        },
+        "package/src/ua-parser.js": {
+          "beforeHash": "2a96167730c8bfb0237709179b9b350ff694e303ff41da7179eef0c145145ccf",
+          "afterHash": "9c142e58363a16a2eb3a20e31c49bb3460cee9eb43902c88d73e7579a0b3aa1b"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-662x-fhqg-9p8v": {
+          "cves": [
+            "CVE-2020-7733"
+          ],
+          "summary": "Regular Expression Denial of Service in ua-parser-js",
+          "severity": "HIGH",
+          "description": "The package ua-parser-js before 0.7.22 are vulnerable to Regular Expression Denial of Service (ReDoS) via the regex for Redmi Phones and Mi Pad Tablets UA."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    }
+  }
+}
